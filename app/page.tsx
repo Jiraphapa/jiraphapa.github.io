@@ -18,7 +18,7 @@ export default function Home() {
 
       <footer className="mt-20 border-t border-border py-8">
         <div className="mx-auto max-w-6xl px-4 text-center text-sm text-muted-foreground sm:px-6 lg:px-8">
-          <p>{"© 2026 Alex Chen. All rights reserved."}</p>
+          <p>{"© 2026 Jiraphapa Jiravaraphan. All rights reserved."}</p>
         </div>
       </footer>
     </div>
