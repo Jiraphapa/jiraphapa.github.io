@@ -55,10 +55,10 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
           </nav>
         </div>
 
-        <Button className="hidden gap-2 sm:flex">
+        {/* <Button className="hidden gap-2 sm:flex">
           {"Let's Talk"}
           <ArrowRight className="h-4 w-4" />
-        </Button>
+        </Button> */}
 
         {/* Mobile navigation */}
         <div className="flex items-center gap-4 md:hidden">
