@@ -26,7 +26,7 @@ export function PostCard({
   return (
     <Link href={`/posts/${slug}`}>
       <article className="group cursor-pointer">
-        <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-lg">
+        <div className="relative mb-4 aspect-[5/3] overflow-hidden rounded-lg">
           <Image
             src={imageUrl || "/placeholder.svg"}
             alt={title}
