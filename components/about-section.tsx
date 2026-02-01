@@ -24,7 +24,7 @@ const experience = [
 const certifications = [
   {
     name: "AWS Solutions Architect Associate",
-    credlyUrl: "https://www.credly.com/badges/your-aws-badge-id",
+    credlyUrl: "https://www.credly.com/badges/b652d2a1-d1c0-464f-b4ab-c8323701c49e/linked_in_profile",
   },
 ]
 
@@ -64,19 +64,19 @@ export function AboutSection() {
 
           {/* Social links */}
           <div className="flex items-center gap-4">
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="https://github.com/jiraphapa" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="https://www.linkedin.com/in/jiraphapa/" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
               <Twitter className="h-5 w-5" />
               <span className="sr-only">Twitter</span>
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="mailto:jira.jiravaraphan@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
             </Link>
