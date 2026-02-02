@@ -1,6 +1,8 @@
 "use client"
 
 import Link from "next/link"
+import { useLanguage } from "@/lib/language-context"
+import { LanguageToggle } from "./language-toggle"
 
 interface HeaderProps {
   activeTab?: "knowledge" | "about"
@@ -8,6 +10,8 @@ interface HeaderProps {
 }
 
 export function Header({ activeTab, onTabChange }: HeaderProps) {
+  const { t } = useLanguage()
+  
   const handleTabClick = (tab: "knowledge" | "about") => {
     if (onTabChange) {
       onTabChange(tab)
@@ -15,7 +19,7 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
   }
 
   // If no onTabChange provided, use links for navigation
-  const NavItem = ({ tab, label }: { tab: "knowledge" | "about"; label: string }) => {
+  const NavItem = ({ tab, labelKey }: { tab: "knowledge" | "about"; labelKey: string }) => {
     const isActive = activeTab === tab
     const baseClassName = "text-sm transition-colors"
     const activeClassName = `${baseClassName} font-bold text-foreground`
@@ -24,10 +28,10 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
     const content = isActive ? (
       <span className="flex items-center gap-1">
         <span className="text-xs">■</span>
-        {label}
+        {t(labelKey)}
       </span>
     ) : (
-      label
+      t(labelKey)
     )
 
     if (onTabChange) {
@@ -57,15 +61,20 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
           </Link>
           
           <nav className="hidden items-center gap-6 md:flex">
-            <NavItem tab="knowledge" label="Blog" />
-            <NavItem tab="about" label="About" />
+            <NavItem tab="knowledge" labelKey="nav.blog" />
+            <NavItem tab="about" labelKey="nav.about" />
           </nav>
         </div>
 
-        {/* Mobile navigation */}
-        <div className="flex items-center gap-4 md:hidden">
-          <NavItem tab="knowledge" label="Blog" />
-          <NavItem tab="about" label="About" />
+        <div className="flex items-center gap-4">
+          {/* Mobile navigation */}
+          <div className="flex items-center gap-4 md:hidden">
+            <NavItem tab="knowledge" labelKey="nav.blog" />
+            <NavItem tab="about" labelKey="nav.about" />
+          </div>
+          
+          {/* Language toggle */}
+          <LanguageToggle />
         </div>
       </div>
     </header>

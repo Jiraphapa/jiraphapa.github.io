@@ -4,10 +4,12 @@ import { useState } from "react"
 import { PostCard } from "./post-card"
 import { posts } from "@/lib/posts-data"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/language-context"
 
 const POSTS_PER_PAGE = 6
 
 export function KnowledgeSharing() {
+  const { t } = useLanguage()
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE)
   
   const visiblePosts = posts.slice(0, visibleCount)
@@ -22,7 +24,7 @@ export function KnowledgeSharing() {
       <div className="mb-12">
         <h1 className="flex items-center gap-3 text-4xl font-bold text-foreground sm:text-5xl">
           <span>■</span>
-          <span>RECENT POSTS</span>
+          <span>{t("blog.recentPosts")}</span>
         </h1>
       </div>
       
@@ -38,7 +40,7 @@ export function KnowledgeSharing() {
             onClick={loadMore}
             className="px-8 py-6 text-base font-semibold"
           >
-            LOAD MORE
+            {t("blog.loadMore")}
           </Button>
         </div>
       )}

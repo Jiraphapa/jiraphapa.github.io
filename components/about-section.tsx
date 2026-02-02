@@ -1,6 +1,9 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
 import { Github, Linkedin, Twitter, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
+import { useLanguage } from "@/lib/language-context"
 
 const experience = [
   {
@@ -24,11 +27,13 @@ const experience = [
 const certifications = [
   {
     name: "AWS Solutions Architect Associate",
-    credlyUrl: "https://www.credly.com/badges/b652d2a1-d1c0-464f-b4ab-c8323701c49e/linked_in_profile",
+    credlyUrl: "https://www.credly.com/badges/your-aws-badge-id",
   },
 ]
 
 export function AboutSection() {
+  const { t } = useLanguage()
+  
   return (
     <section className="py-12">
       <div className="grid gap-12 lg:grid-cols-[280px,1fr] lg:gap-16">
@@ -36,13 +41,13 @@ export function AboutSection() {
         <div className="space-y-8">
           <div>
             <h1 className="text-3xl font-bold text-foreground sm:text-4xl">Jiraphapa Jiravaraphan</h1>
-            <p className="mt-2 text-lg text-muted-foreground">Solutions Architect · Open Source Educator</p>
+            <p className="mt-2 text-lg text-muted-foreground">{t("about.role")}</p>
             <div className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin className="h-4 w-4" />
-              <span>Bangkok, Thailand</span>
+              <span>{t("about.location")}</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              I design scalable, secure, and cost-effective cloud solutions for the modern enterprise.
+              {t("about.bio")}
             </p>
           </div>
 
@@ -50,29 +55,33 @@ export function AboutSection() {
           <nav className="space-y-3">
             <a href="#about" className="flex items-center gap-3 text-sm font-medium text-foreground">
               <span className="h-px w-8 bg-foreground" />
-              ABOUT
+              {t("about.title")}
             </a>
             <a href="#experience" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
               <span className="h-px w-8 bg-muted-foreground" />
-              EXPERIENCE
+              {t("about.experience")}
             </a>
             <a href="#certifications" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
               <span className="h-px w-8 bg-muted-foreground" />
-              CERTIFICATIONS
+              {t("about.certifications")}
             </a>
           </nav>
 
           {/* Social links */}
           <div className="flex items-center gap-4">
-            <Link href="https://github.com/jiraphapa" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
-            <Link href="https://www.linkedin.com/in/jiraphapa/" target="_blank" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            <Link href="mailto:jira.jiravaraphan@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Twitter className="h-5 w-5" />
+              <span className="sr-only">Twitter</span>
+            </Link>
+            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
             </Link>
@@ -84,13 +93,13 @@ export function AboutSection() {
           {/* About */}
           <div id="about" className="space-y-4">
             <p className="text-base leading-relaxed text-muted-foreground">
-              {"I'm a Solutions Architect passionate about building robust, scalable systems that solve real business problems. My work sits at the intersection of "}
-              <span className="font-medium text-foreground">cloud infrastructure</span>
+              {t("about.intro") + " "}
+              <span className="font-medium text-foreground">{t("about.cloudInfra")}</span>
               {", "}
-              <span className="font-medium text-foreground">distributed systems</span>
-              {", and "}
-              <span className="font-medium text-foreground">enterprise architecture</span>
-              {", creating solutions that are not only technically sound but also aligned with business objectives."}
+              <span className="font-medium text-foreground">{t("about.distributedSystems")}</span>
+              {", "}
+              <span className="font-medium text-foreground">{t("about.enterpriseArch")}</span>
+              {t("about.introEnd")}
             </p>
             
           </div>
@@ -127,7 +136,7 @@ export function AboutSection() {
           {/* Certifications */}
           <div id="certifications" className="space-y-4">
             <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-              Certifications
+              {t("about.certifications")}
             </h2>
             <ul className="space-y-2">
               {certifications.map((cert) => (
