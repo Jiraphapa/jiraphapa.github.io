@@ -59,7 +59,7 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
             <div className="flex h-8 w-8 items-center justify-center rounded bg-primary">
               <span className="text-sm font-bold text-primary-foreground">JJ</span>
             </div>
-            <span className="text-lg font-semibold text-foreground">Jiraphapa</span>
+            <span className="text-lg font-semibold text-foreground">JIRAPHAPA J.</span>
           </Link>
           
           <nav className="hidden items-center gap-6 md:flex">
