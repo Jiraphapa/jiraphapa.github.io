@@ -69,19 +69,15 @@ export function AboutSection() {
 
           {/* Social links */}
           <div className="flex items-center gap-4">
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link target="_blank" href="https://github.com/jiraphapa" className="text-muted-foreground hover:text-foreground transition-colors">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link target="_blank" href="https://www.linkedin.com/in/jiraphapa/" className="text-muted-foreground hover:text-foreground transition-colors">
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
-            </Link>
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link target="_blank" href="mailto:jira.jiravaraphan@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
             </Link>
