@@ -17,8 +17,8 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.about": "About",
     
     // Blog section
-    "blog.recentPosts": "RECENT POSTS",
-    "blog.loadMore": "LOAD MORE",
+    "blog.recentPosts": "Recent posts",
+    "blog.loadMore": "Load More",
     "blog.postBy": "POST BY",
     "blog.home": "Home",
     
