@@ -27,7 +27,7 @@ const experience = [
 const certifications = [
   {
     name: "AWS Solutions Architect Associate",
-    credlyUrl: "https://www.credly.com/badges/your-aws-badge-id",
+    credlyUrl: "https://www.credly.com/badges/b652d2a1-d1c0-464f-b4ab-c8323701c49e/linked_in_profile",
   },
 ]
 
