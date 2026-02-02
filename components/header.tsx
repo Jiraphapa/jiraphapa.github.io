@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { useLanguage } from "@/lib/language-context"
 import { LanguageToggle } from "./language-toggle"
+import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 interface HeaderProps {
   activeTab?: "knowledge" | "about"
@@ -65,7 +67,7 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
             <NavItem tab="about" labelKey="nav.about" />
           </nav>
         </div>
-
+        
         <div className="flex items-center gap-4">
           {/* Mobile navigation */}
           <div className="flex items-center gap-4 md:hidden">
@@ -75,6 +77,14 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
           
           {/* Language toggle */}
           <LanguageToggle />
+
+          <Button asChild className="hidden gap-2 sm:flex">
+            <Link href="https://www.linkedin.com/in/jiraphapa" target="_blank">
+              {"Let's Talk"}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+
         </div>
       </div>
     </header>

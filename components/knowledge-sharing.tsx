@@ -6,7 +6,7 @@ import { posts } from "@/lib/posts-data"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 
-const POSTS_PER_PAGE = 6
+const POSTS_PER_PAGE = 9
 
 export function KnowledgeSharing() {
   const { t } = useLanguage()
