@@ -1,8 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 interface HeaderProps {
   activeTab?: "knowledge" | "about"
@@ -19,21 +17,30 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
   // If no onTabChange provided, use links for navigation
   const NavItem = ({ tab, label }: { tab: "knowledge" | "about"; label: string }) => {
     const isActive = activeTab === tab
-    const className = `text-sm font-medium transition-colors ${
-      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-    }`
+    const baseClassName = "text-sm transition-colors"
+    const activeClassName = `${baseClassName} font-bold text-foreground`
+    const inactiveClassName = `${baseClassName} font-medium text-muted-foreground hover:text-foreground`
+
+    const content = isActive ? (
+      <span className="flex items-center gap-1">
+        <span className="text-xs">■</span>
+        {label}
+      </span>
+    ) : (
+      label
+    )
 
     if (onTabChange) {
       return (
-        <button onClick={() => handleTabClick(tab)} className={className}>
-          {label}
+        <button onClick={() => handleTabClick(tab)} className={isActive ? activeClassName : inactiveClassName}>
+          {content}
         </button>
       )
     }
 
     return (
-      <Link href={`/?tab=${tab}`} className={className}>
-        {label}
+      <Link href={`/?tab=${tab}`} className={isActive ? activeClassName : inactiveClassName}>
+        {content}
       </Link>
     )
   }
@@ -50,19 +57,14 @@ export function Header({ activeTab, onTabChange }: HeaderProps) {
           </Link>
           
           <nav className="hidden items-center gap-6 md:flex">
-            <NavItem tab="knowledge" label="Knowledge Sharing" />
+            <NavItem tab="knowledge" label="Blog" />
             <NavItem tab="about" label="About" />
           </nav>
         </div>
 
-        {/* <Button className="hidden gap-2 sm:flex">
-          {"Let's Talk"}
-          <ArrowRight className="h-4 w-4" />
-        </Button> */}
-
         {/* Mobile navigation */}
         <div className="flex items-center gap-4 md:hidden">
-          <NavItem tab="knowledge" label="Articles" />
+          <NavItem tab="knowledge" label="Blog" />
           <NavItem tab="about" label="About" />
         </div>
       </div>
