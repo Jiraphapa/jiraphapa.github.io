@@ -53,10 +53,10 @@ export function AboutSection() {
 
           {/* Navigation */}
           <nav className="space-y-3">
-            <a href="#about" className="flex items-center gap-3 text-sm font-medium text-foreground">
+            {/* <a href="#about" className="flex items-center gap-3 text-sm font-medium text-foreground">
               <span className="h-px w-8 bg-foreground" />
               {t("about.title")}
-            </a>
+            </a> */}
             <a href="#experience" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
               <span className="h-px w-8 bg-muted-foreground" />
               {t("about.experience")}
@@ -87,7 +87,7 @@ export function AboutSection() {
         {/* Right content */}
         <div className="space-y-12">
           {/* About */}
-          <div id="about" className="space-y-4">
+          {/* <div id="about" className="space-y-4">
             <p className="text-base leading-relaxed text-muted-foreground">
               {t("about.intro") + " "}
               <span className="font-medium text-foreground">{t("about.cloudInfra")}</span>
@@ -98,10 +98,13 @@ export function AboutSection() {
               {t("about.introEnd")}
             </p>
             
-          </div>
+          </div> */}
 
           {/* Experience */}
           <div id="experience" className="space-y-6">
+            <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+              {t("about.experience")}
+            </h2>
             {experience.map((exp, index) => (
               <div key={index} className="group grid gap-4 rounded-lg p-4 transition-colors hover:bg-muted/50 sm:grid-cols-[140px,1fr]">
                 <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
