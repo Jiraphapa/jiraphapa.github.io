@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { getPosts } from "@/lib/posts-data"
 
+export const dynamic = "force-static"
+
 export async function GET() {
   try {
     const posts = await getPosts()
