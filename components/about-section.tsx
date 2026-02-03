@@ -22,6 +22,46 @@ const experience = [
     description: "Global automotive leader with large-scale infrastructure.",
     skills: ["HPC", "Cloud"],
   },
+  {
+    period: "09/2020 — 05/2021",
+    role: "Software Engineer: Performance Optimization for Autonomous Racing",
+    company: "FTM Institute of Automotive Technology",
+    location: "Munich, Germany",
+    description: "Germany's leading research hub for mobility",
+    skills: ["Performance-Optimization", "Embedded-Systems"],
+  },
+  {
+    period: "05/2019 — 08/2019",
+    role: "Software Engineer: Open-Source Simulation for Autonomous Vehicles",
+    company: "Fortiss",
+    location: "Munich, Germany",
+    description: "Bavarian State Technology Research Institute ",
+    skills: ["Artificial Intelligence", "Multi-Agent-Systems"],
+  },
+  {
+    period: "06/2017 — 07/2017",
+    role: "FS Developer: Global Automation Systems & Chatbot",
+    company: "ExxonMobil",
+    location: "Bangkok, Thailand",
+    description: "Largest U.S.-based oil and gas company",
+    skills: ["Automation", "Chatbot"],
+  },
+  {
+    period: "06/2016 — 08/2016",
+    role: "Microsoft Technical Evangelist: Microsoft Azure",
+    company: "Microsoft",
+    location: "Bangkok, Thailand",
+    description: "Gloabal technology company",
+    skills: ["Azure", "Machine Learning", "Data Analysis"],
+  },
+  {
+    period: "06/2015 — 10/2015",
+    role: "FS Web Developer",
+    company: "App Alive Co.,ltd.",
+    location: "Bangkok, Thailand",
+    description: "Thailand's full-service IT consulting firm",
+    skills: ["Automation", "Chatbot"],
+  },
 ]
 
 const certifications = [
@@ -33,7 +73,7 @@ const certifications = [
 
 export function AboutSection() {
   const { t } = useLanguage()
-  
+
   return (
     <section className="py-12">
       <div className="grid gap-12 lg:grid-cols-[280px,1fr] lg:gap-16">
@@ -141,9 +181,9 @@ export function AboutSection() {
               {certifications.map((cert) => (
                 <li key={cert.name} className="flex items-center gap-2 text-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
-                  <Link 
-                    href={cert.credlyUrl} 
-                    target="_blank" 
+                  <Link
+                    href={cert.credlyUrl}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-foreground underline transition-colors"
                   >
