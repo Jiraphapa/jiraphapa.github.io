@@ -3,10 +3,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { ChevronRight, Calendar } from "lucide-react"
-import { getPostBySlug, posts } from "@/lib/posts-data"
+import { getPostBySlug, getPosts } from "@/lib/posts-data"
 import { Header } from "@/components/header"
 
 export async function generateStaticParams() {
+  const posts = await getPosts()
   return posts.map((post) => ({
     slug: post.slug,
   }))
@@ -14,12 +15,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
-  
+  const post = await getPostBySlug(slug)
+
   if (!post) {
     return { title: "Post Not Found" }
   }
-  
+
   return {
     title: `${post.title} | Jiraphapa Jiravaraphan`,
     description: post.excerpt,
@@ -28,11 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
-  
-  if (!post) {
-    notFound()
-  }
+  const post = await getPostBySlug(slug)
   
   return (
     <div className="min-h-screen bg-background">
