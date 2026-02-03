@@ -23,7 +23,7 @@ const experience = [
     skills: ["HPC", "Cloud"],
   },
   {
-    period: "09/2020 — 05/2021",
+    period: "09/2019 — 01/2020",
     role: "Software Engineer: Performance Optimization for Autonomous Racing",
     company: "FTM Institute of Automotive Technology",
     location: "Munich, Germany",
@@ -35,12 +35,20 @@ const experience = [
     role: "Software Engineer: Open-Source Simulation for Autonomous Vehicles",
     company: "Fortiss",
     location: "Munich, Germany",
-    description: "Bavarian State Technology Research Institute ",
+    description: "Bavarian State Technology Research Institute",
     skills: ["Artificial Intelligence", "Multi-Agent-Systems"],
   },
   {
+    period: "05/2017 — 05/2018",
+    role: "Software Engineer: Autonomous Drones for Object Localization",
+    company: "HG Robotics",
+    location: "Bangkok, Thailand",
+    description: "Thailand's leading developer of advanced robotics",
+    skills: ["Artificial Intelligence", "Computer Vision", "Autonomous Drones"],
+  },
+  {
     period: "06/2017 — 07/2017",
-    role: "FS Developer: Global Automation Systems & Chatbot",
+    role: "Full Stack Developer: Global Automation Systems & Chatbot",
     company: "ExxonMobil",
     location: "Bangkok, Thailand",
     description: "Largest U.S.-based oil and gas company",
@@ -56,11 +64,11 @@ const experience = [
   },
   {
     period: "06/2015 — 10/2015",
-    role: "FS Web Developer",
+    role: "Full Stack Developer: Commercial Web Development",
     company: "App Alive Co.,ltd.",
     location: "Bangkok, Thailand",
     description: "Thailand's full-service IT consulting firm",
-    skills: ["Automation", "Chatbot"],
+    skills: ["Web Development", "Server Management"],
   },
 ]
 
