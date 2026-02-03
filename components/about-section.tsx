@@ -12,7 +12,7 @@ const experience = [
     company: "Netlight Consulting",
     location: "Munich, Germany",
     description: "Premium strategic IT consultancy for global enterprises.",
-    skills: ["Cloud", "DevSecOps"],
+    skills: ["Cloud", "DevSecOps", "Full-Stack-Development"],
   },
   {
     period: "09/2020 — 05/2021",
@@ -48,7 +48,7 @@ const experience = [
   },
   {
     period: "06/2017 — 07/2017",
-    role: "Full Stack Developer: Global Automation Systems & Chatbot",
+    role: "Full-Stack Developer: Global Automation Systems & Chatbot",
     company: "ExxonMobil",
     location: "Bangkok, Thailand",
     description: "Largest U.S.-based oil and gas company",
@@ -64,7 +64,7 @@ const experience = [
   },
   {
     period: "06/2015 — 10/2015",
-    role: "Full Stack Developer: Commercial Web Development",
+    role: "Full-Stack Developer: Commercial Web Development",
     company: "App Alive Co.,ltd.",
     location: "Bangkok, Thailand",
     description: "Thailand's full-service IT consulting firm",
