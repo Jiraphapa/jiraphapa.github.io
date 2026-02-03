@@ -145,7 +145,7 @@ export function AboutSection() {
                     href={cert.credlyUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground hover:underline transition-colors"
+                    className="text-muted-foreground hover:text-foreground underline transition-colors"
                   >
                     {cert.name}
                   </Link>
