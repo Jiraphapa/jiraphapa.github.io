@@ -70,6 +70,14 @@ const experience = [
     description: "Thailand's full-service IT consulting firm",
     skills: ["Web Development", "Server Management"],
   },
+  {
+    period: "06/2014 — 07/2014",
+    role: "IT Service Desk",
+    company: "Hardware House",
+    location: "Bangkok, Thailand",
+    description: "IT Equipment Retailer",
+    skills: ["Troubleshooting", "Customer Service"],
+  },
 ]
 
 const certifications = [
