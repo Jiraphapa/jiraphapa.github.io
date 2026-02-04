@@ -25,14 +25,13 @@ Why does this matter? In a distributed environment, latency isn't just a technic
 
 In 2021, we bypassed the "Wait Tax" by using [InfiniBand](https://network.nvidia.com/pdf/whitepapers/IB_Intro_WP_190.pdf) on-site and AWS [EFA (Elastic Fabric Adapter)](https://aws.amazon.com/hpc/efa/) in the cloud. This enabled [RDMA (Remote Direct Memory Access)](https://www.oracle.com/database/technologies/exadata/hardware/rdmanetwork/), allowing nodes to talk to each other's memory without OS intervention. This was essentially a "kernel bypass" that let nodes write directly to each other’s [VRAM](https://www.geeksforgeeks.org/computer-organization-architecture/vram-full-form/), skipping the CPU/OS interrupt overhead that usually kills performance. 
 
-In 2026, we are no longer just bypassing the OS; we are fighting the Physics of the Wire. At [1.6 Terabit per second (1.6T)](https://www.nvidia.com/en-us/networking/ethernet-switching/) speeds, traditional copper cables are hitting a distance-and-heat wall. Modern GPU clusters (like the [NVIDIA DGX Rubin](https://www.nvidia.com/en-us/data-center/technologies/rubin/) series) face a brutal physical bottleneck: Tail Latency Jitter. Even with massive bandwidth, if the fabric is not deterministic (meaning it handles congestion without dropping packets), your million-dollar GPUs could spend 40% of their life just "checking their watches" and waiting for data to arrive.
+In 2026, we are no longer just bypassing the OS; we are fighting the Physics of the Wire. At [1.6 Terabit per second (1.6T)](https://www.nvidia.com/en-us/networking/ethernet-switching/) speeds, traditional copper cables are hitting a distance-and-heat wall. Modern GPU clusters (like the [NVIDIA DGX Rubin](https://www.nvidia.com/en-us/data-center/technologies/rubin/) series) face a brutal physical bottleneck: Tail Latency Jitter. Even with massive bandwidth, if the fabric is not [deterministic](https://ieeexplore.ieee.org/document/10652378) (meaning it handles congestion without dropping packets), your million-dollar GPUs could spend 40% of their life just "checking their watches" and waiting for data to arrive.
 
-Fun Fact: This is exactly why companies like NVIDIA, Microsoft, and Meta spend billions on "Backend Fabrics."
+**Fun Fact**: This is exactly why companies like NVIDIA, Microsoft, and Meta are shifting billions in capital expenditures toward networking.
 
 Mastering these ultra-fast networks is the only way to make 1,000 GPUs act like one giant superbrain instead of 1,000 confused minions. Mastering low-latency fabrics is no longer an "infrastructure detail"—it is the only way to scale the cluster without the scaling efficiency falling off a cliff.
 
-The Bottom Line: In 2026, you don't win by having the fastest cars (GPUs); you win by having the best air traffic control (The Fabric). You can't build a world-class AI with just fast chips; you build it with the "glue" that connects them.
-
+The Bottom Line: Building world-class AI is not just about having the fastest chips. In 2026, you don't win by having the fastest cars (GPUs); you win by having the best traffic control (The Fabric).
 
 ## 2. The Hybrid Reality: Data Gravity & Sovereignty
 
