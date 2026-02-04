@@ -27,14 +27,40 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+// Helper to parse markdown links: [text](url)
+function renderWithLinks(text: string) {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((part, index) => {
+    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (match) {
+      return (
+        <a
+          key={index}
+          href={match[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+        >
+          {match[1]}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = await getPostBySlug(slug)
-  
+
+  if (!post) {
+    notFound()
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
@@ -48,17 +74,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <ChevronRight className="h-4 w-4" />
           <span className="text-foreground line-clamp-1">{post.title}</span>
         </nav>
-        
+
         {/* Title */}
         <h1 className="text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
           {post.title}
         </h1>
-        
+
         {/* Excerpt */}
         <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
           {post.excerpt}
         </p>
-        
+
         {/* Author */}
         <div className="mt-6 flex items-center gap-3">
           <div className="relative h-12 w-12 overflow-hidden rounded-full">
@@ -71,7 +97,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </div>
           <span className="font-medium text-foreground">{post.author}</span>
         </div>
-        
+
         {/* Featured Image */}
         <div className="mt-10 relative aspect-video w-full overflow-hidden rounded-xl">
           <Image
@@ -82,7 +108,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             priority
           />
         </div>
-        
+
         {/* Category and Date */}
         <div className="mt-10 flex items-center gap-4">
           <Badge variant="secondary" className="bg-primary text-primary-foreground text-xs font-medium uppercase tracking-wide">
@@ -93,14 +119,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <span>{post.date}</span>
           </div>
         </div>
-        
+
         {/* Content */}
         <article className="mt-8 space-y-10">
           {/* Introduction */}
           <p className="text-base leading-relaxed text-muted-foreground">
-            {post.content.intro}
+            {renderWithLinks(post.content.intro)}
           </p>
-          
+
           {/* Sections */}
           {post.content.sections.map((section, sectionIndex) => (
             <section key={sectionIndex} className="space-y-4">
@@ -113,7 +139,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
                     <span className="text-muted-foreground">
                       <span className="font-semibold text-foreground">{item.label}:</span>{" "}
-                      {item.description}
+                      {renderWithLinks(item.description)}
                     </span>
                   </li>
                 ))}
@@ -121,11 +147,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </section>
           ))}
         </article>
-        
+
         {/* Back link */}
         <div className="mt-16 border-t pt-8">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             <ChevronRight className="h-4 w-4 rotate-180" />

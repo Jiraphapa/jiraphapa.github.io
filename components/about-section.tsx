@@ -32,7 +32,7 @@ const experience = [
   },
   {
     period: "05/2019 — 08/2019",
-    role: "Software Engineer: Open-Source Simulation for Autonomous Vehicles",
+    role: "Software Engineer: Model-Centric Simulation Framework for Autonomous Driving",
     company: "Fortiss",
     location: "Munich, Germany",
     description: "Bavarian State Technology Research Institute",
@@ -75,7 +75,7 @@ const experience = [
     role: "IT Service Desk",
     company: "Hardware House",
     location: "Bangkok, Thailand",
-    description: "IT Equipment Retailer",
+    description: "Thailand's importer and distributor of IT Equipments",
     skills: ["Troubleshooting", "Customer Service"],
   },
 ]

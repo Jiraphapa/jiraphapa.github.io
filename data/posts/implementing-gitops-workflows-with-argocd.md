@@ -2,7 +2,7 @@
 category: "DevOps"
 title: "Implementing GitOps Workflows with ArgoCD and Kubernetes"
 excerpt: "A practical guide to setting up GitOps pipelines that automate deployments and improve team collaboration across environments."
-date: "JAN 25, 2026"
+date: "JAN 21, 2026"
 author: "Jiraphapa Jiravaraphan"
 authorAvatar: "https://media.licdn.com/dms/image/v2/C4E03AQEYatDATIXCDA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1653991221607?e=1771459200&v=beta&t=M8uQkzQufx618ecBwpz__8OvSGxrUHbMir14t7vM9v4"
 imageUrl: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop"
