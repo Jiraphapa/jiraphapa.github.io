@@ -16,7 +16,7 @@ Today, in 2026, while Generative AI and CFD serve completely different use cases
 
 ## 1. The Tail Latency Wall
 
-*The Network is the Computer —John Gage, Sun Microsystems.*
+*The Network is the Computer —John Gage, 1984, Sun Microsystems.*
 
 
 High-performance workloads like CFD and GenAI Training are [tightly coupled](https://docs.aws.amazon.com/wellarchitected/latest/high-performance-computing-lens/tightly-coupled-scenarios.html), meaning the slowest node dictates the speed of the entire cluster. In CFD, if one node calculates airflow physics slower than others, the whole simulation waits. In GenAI, the [All-Reduce](https://docs.nvidia.com/doca/archive/doca-v1.3/allreduce/index.html) phase of distributed training turns every microsecond of network jitter into idle GPU cycles.
