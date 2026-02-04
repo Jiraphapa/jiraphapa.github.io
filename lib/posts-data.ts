@@ -15,6 +15,7 @@ export interface Post {
     intro: string
     sections: {
       title: string
+      text: string
       items: {
         label: string
         description: string
@@ -45,6 +46,7 @@ function parsePostContent(content: string): Post["content"] {
       }
       currentSection = {
         title: trimmed.replace(/^##\s+/, ""),
+        text: "",
         items: []
       }
     } else if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
@@ -58,9 +60,29 @@ function parsePostContent(content: string): Post["content"] {
           currentSection.items.push({ label, description })
         }
       }
-    } else if (trimmed && !currentSection && !trimmed.startsWith("#")) {
+    } else if (currentSection && !trimmed.startsWith("#")) {
+      // Text inside a section
+      if (trimmed === "") {
+        if (currentSection.text && !currentSection.text.endsWith("\n\n")) {
+          currentSection.text += "\n\n"
+        }
+      } else {
+        const separator = currentSection.text.endsWith("\n\n") ? "" : (currentSection.text ? " " : "")
+        currentSection.text += separator + trimmed
+      }
+    } else if (!currentSection && !trimmed.startsWith("#")) {
       // Intro text (before first section)
-      intro += (intro ? " " : "") + trimmed
+      if (trimmed === "") {
+        // If we hit an empty line and we have intro text, ensure we have a double newline separator
+        if (intro && !intro.endsWith("\n\n")) {
+          intro += "\n\n"
+        }
+      } else {
+        // Append text. If we just added a newline, don't add a space.
+        // Otherwise add a space for line continuation.
+        const separator = intro.endsWith("\n\n") ? "" : (intro ? " " : "")
+        intro += separator + trimmed
+      }
     }
   }
 

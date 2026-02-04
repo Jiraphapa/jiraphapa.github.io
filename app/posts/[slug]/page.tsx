@@ -123,9 +123,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         {/* Content */}
         <article className="mt-8 space-y-10">
           {/* Introduction */}
-          <p className="text-base leading-relaxed text-muted-foreground">
-            {renderWithLinks(post.content.intro)}
-          </p>
+          <div className="space-y-6">
+            {post.content.intro.split("\n\n").map((paragraph, index) => (
+              <p key={index} className="text-base leading-relaxed text-muted-foreground">
+                {renderWithLinks(paragraph)}
+              </p>
+            ))}
+          </div>
 
           {/* Sections */}
           {post.content.sections.map((section, sectionIndex) => (
@@ -133,6 +137,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               <h2 className="text-2xl font-bold text-foreground">
                 {section.title}
               </h2>
+
+              {section.text && (
+                <div className="space-y-6">
+                  {section.text.split("\n\n").map((paragraph, index) => (
+                    <p key={index} className="text-base leading-relaxed text-muted-foreground">
+                      {renderWithLinks(paragraph)}
+                    </p>
+                  ))}
+                </div>
+              )}
+
               <ul className="space-y-3">
                 {section.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="flex gap-3 text-base">
