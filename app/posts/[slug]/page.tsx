@@ -1,3 +1,4 @@
+import React from "react"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
@@ -27,26 +28,50 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-// Helper to parse markdown links: [text](url)
-function renderWithLinks(text: string) {
-  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
-  return parts.map((part, index) => {
-    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    if (match) {
+// Helper to parse markdown styling: Links, Bold, Italic
+function renderMarkdown(text: string): React.ReactNode[] {
+  // 1. Split by Links
+  let segments: React.ReactNode[] = text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
       return (
         <a
-          key={index}
-          href={match[2]}
+          key={`link-${i}`}
+          href={linkMatch[2]}
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
         >
-          {match[1]}
+          {linkMatch[1]}
         </a>
       );
     }
     return part;
   });
+
+  // 2. Process Bold (**text**)
+  segments = segments.flatMap((segment, i) => {
+    if (typeof segment !== 'string') return [segment];
+    return segment.split(/(\*\*[^*]+\*\*)/g).map((s, j) => {
+      if (s.startsWith('**') && s.endsWith('**')) {
+        return <strong key={`bold-${i}-${j}`} className="font-bold text-foreground">{s.slice(2, -2)}</strong>;
+      }
+      return s;
+    }) as React.ReactNode[];
+  });
+
+  // 3. Process Italic (*text* or _text_)
+  segments = segments.flatMap((segment, i) => {
+    if (typeof segment !== 'string') return [segment];
+    return segment.split(/(\*[^*]+\*|_{1}[^_]+_{1})/g).map((s, j) => {
+      if ((s.startsWith('*') && s.endsWith('*')) || (s.startsWith('_') && s.endsWith('_'))) {
+        return <em key={`italic-${i}-${j}`} className="italic">{s.slice(1, -1)}</em>;
+      }
+      return s;
+    }) as React.ReactNode[];
+  });
+
+  return segments;
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -124,11 +149,20 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <article className="mt-8 space-y-10">
           {/* Introduction */}
           <div className="space-y-6">
-            {post.content.intro.split("\n\n").map((paragraph, index) => (
-              <p key={index} className="text-base leading-relaxed text-muted-foreground">
-                {renderWithLinks(paragraph)}
-              </p>
-            ))}
+            {post.content.intro.split("\n\n").map((paragraph, index) => {
+              if (paragraph.startsWith("> ")) {
+                return (
+                  <blockquote key={index} className="border-l-4 border-primary pl-4 italic text-muted-foreground">
+                    {renderMarkdown(paragraph.slice(2))}
+                  </blockquote>
+                )
+              }
+              return (
+                <p key={index} className="text-base leading-relaxed text-muted-foreground">
+                  {renderMarkdown(paragraph)}
+                </p>
+              )
+            })}
           </div>
 
           {/* Sections */}
@@ -140,11 +174,20 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
               {section.text && (
                 <div className="space-y-6">
-                  {section.text.split("\n\n").map((paragraph, index) => (
-                    <p key={index} className="text-base leading-relaxed text-muted-foreground">
-                      {renderWithLinks(paragraph)}
-                    </p>
-                  ))}
+                  {section.text.split("\n\n").map((paragraph, index) => {
+                    if (paragraph.startsWith("> ")) {
+                      return (
+                        <blockquote key={index} className="border-l-4 border-primary pl-4 italic text-muted-foreground">
+                          {renderMarkdown(paragraph.slice(2))}
+                        </blockquote>
+                      )
+                    }
+                    return (
+                      <p key={index} className="text-base leading-relaxed text-muted-foreground">
+                        {renderMarkdown(paragraph)}
+                      </p>
+                    )
+                  })}
                 </div>
               )}
 
@@ -154,7 +197,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
                     <span className="text-muted-foreground">
                       <span className="font-semibold text-foreground">{item.label}:</span>{" "}
-                      {renderWithLinks(item.description)}
+                      {renderMarkdown(item.description)}
                     </span>
                   </li>
                 ))}
