@@ -25,6 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | Jiraphapa Jiravaraphan`,
     description: post.excerpt,
+    openGraph: {
+      images: post.imageUrl ? [post.imageUrl] : [],
+    },
   }
 }
 
