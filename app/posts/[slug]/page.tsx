@@ -28,6 +28,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       images: post.imageUrl ? [post.imageUrl] : [],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: post.imageUrl ? [post.imageUrl] : [],
+    },
   }
 }
 
