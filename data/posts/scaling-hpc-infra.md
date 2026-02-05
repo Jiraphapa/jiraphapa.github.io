@@ -5,7 +5,7 @@ excerpt: "What does an industrial giant's supercomputers have in common with tod
 date: "Jan 26, 2026"
 author: "Jiraphapa Jiravaraphan"
 authorAvatar: "https://media.licdn.com/dms/image/v2/C4E03AQEYatDATIXCDA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1653991221607?e=1771459200&v=beta&t=M8uQkzQufx618ecBwpz__8OvSGxrUHbMir14t7vM9v4"
-imageUrl: "https://images.unsplash.com/photo-1639066648921-82d4500abf1a?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+imageUrl: "https://images.unsplash.com/photo-1639066648921-82d4500abf1a?&w=800&h=600&fit=crop"
 ---
 
 In 2020/2021, I architected a Hybrid [High-Performance Computing (HPC)](https://www.ibm.com/think/topics/hpc) environment for a global industrial manufacturer. We maintained a core [HPC cluster](https://www.hpe.com/emea_europe/en/what-is/hpc-clusters.html) of 200+ [nodes](https://glossary.cncf.io/nodes/) on-premises, while implementing a Cloud-Bursting strategy to AWS. This architecture allowed us to elastically scale over 500+ instances during peak computational cycles, ensuring that infrastructure was never a bottleneck for engineering velocity. 
