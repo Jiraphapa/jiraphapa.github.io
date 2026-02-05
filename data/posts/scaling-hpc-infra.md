@@ -45,7 +45,7 @@ In 2021, the "Full Cloud" dream often hits the wall of [Data Gravity](https://ww
 
 In a parallel workload (like CFD and GenAI), one instance must frequently access data residing in the memory of another instance. This "direct access" is the key to performance, but it’s also a significant security surface. Security cannot be an afterthought when running a fabric where the boundaries between nodes are intentionally blurred for speed.
 
-Following industry-standard security best practices and [Zero Trust](https://learn.microsoft.com/en-us/security/zero-trust/zero-trust-overview) principles, we implemented strict access controls, security hardening, data encryption (at rest and in transit), logs & monitoring, and automated configurations.
+Following industry-standard best practices and [Zero Trust](https://learn.microsoft.com/en-us/security/zero-trust/zero-trust-overview) principles, we implemented strict access controls, security hardening, data encryption (at rest and in transit), logs & monitoring, and automated configurations.
 
 By architecting a Hybrid Infrastructure, we created a practical advantage in [Data Sovereignty](https://www.cloudflare.com/learning/privacy/what-is-data-sovereignty/). In 2026, this model has become the standard for "Sovereign AI." Organizations now keep their sensitive and proprietary data on-premises for primary model training to maintain control, while using the cloud's scale for specific [fine-tuning](https://www.ibm.com/think/topics/fine-tuning) and [inference](https://www.ibm.com/think/topics/inference) tasks.
 
