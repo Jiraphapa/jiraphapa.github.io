@@ -69,7 +69,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.certifications": "ใบรับรอง",
     "about.role": "Infrastructure · Software Engineering · Open Source Education",
     "about.location": "กรุงเทพฯ, ประเทศไทย",
-    "about.bio": "ฉันออกแบบระบบและสร้างโครงสร้างพื้นฐานที่มีประสิทธิภาพสูง ปรับขนาดได้ ปลอดภัย และคุ้มค่าสำหรับองค์กรยุคใหม่",
+    "about.bio": "ฉันออกแบบระบบและสร้างโครงสร้างพื้นฐานที่มีประสิทธิภาพ ปรับขนาดได้ ปลอดภัย และคุ้มค่าสำหรับองค์กรยุคใหม่",
     "about.intro": "ฉันเป็น Solutions Architect ที่หลงใหลในการสร้างระบบที่แข็งแกร่งและปรับขนาดได้เพื่อแก้ปัญหาทางธุรกิจจริง งานของฉันอยู่ที่จุดตัดของ",
     "about.cloudInfra": "โครงสร้างพื้นฐานคลาวด์",
     "about.distributedSystems": "ระบบกระจาย",
