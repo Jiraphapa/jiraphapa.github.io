@@ -28,7 +28,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.certifications": "Certifications",
     "about.role": "Infrastructure · Software Engineering · Open Source Education",
     "about.location": "Bangkok, Thailand",
-    "about.bio": "I design and build high-performance, scalable, secure, and cost-effective infrastructure for enterprises.",
+    "about.bio": "I design and build performant, scalable, secure, and cost-effective infrastructure for enterprises.",
     "about.intro": "I'm a Solutions Architect passionate about building robust, scalable systems that solve real business problems. My work sits at the intersection of",
     "about.cloudInfra": "cloud infrastructure",
     "about.distributedSystems": "distributed systems",
