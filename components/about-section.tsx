@@ -44,7 +44,7 @@ const experience = [
     company: "HG Robotics",
     location: "Bangkok, Thailand",
     description: "Thailand's leading developer of advanced robotics",
-    skills: ["Artificial Intelligence", "Computer Vision", "Autonomous Drones"],
+    skills: ["Artificial Intelligence", "Embedded-Systems", "Computer Vision"],
   },
   {
     period: "06/2017 — 07/2017",
