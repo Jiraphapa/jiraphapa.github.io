@@ -27,7 +27,7 @@ Why does this matter? In a distributed environment, latency isn't just a technic
 
 
 
-In 2021, we bypassed the "Wait Tax" by using [InfiniBand](https://network.nvidia.com/pdf/whitepapers/IB_Intro_WP_190.pdf) on-site and AWS [EFA (Elastic Fabric Adapter)](https://aws.amazon.com/hpc/efa/) in the cloud. This enabled [RDMA](https://www.oracle.com/database/technologies/exadata/hardware/rdmanetwork/)-style, kernel-bypass communication, allowing nodes to directly read and write each other’s registered memory without OS intervention. By avoiding the TCP/IP stack, kernel crossings, and CPU interrupts, we eliminated much of the communication overhead that typically limits distributed performance. EFA setups around that time exposed up to ~100 Gbps of raw network bandwidth between instances, significantly higher bandwidth and lower latency for [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) workloads than standard TCP-based networking.
+In 2021, we bypassed the "Wait Tax" by using [InfiniBand](https://network.nvidia.com/pdf/whitepapers/IB_Intro_WP_190.pdf) on-site and AWS [EFA (Elastic Fabric Adapter)](https://aws.amazon.com/hpc/efa/) in the cloud. This enabled [RDMA](https://www.oracle.com/database/technologies/exadata/hardware/rdmanetwork/)-style, kernel-bypass communication, allowing nodes to directly read and write each other’s registered memory without OS intervention. EFA setups around that time exposed up to ~100 Gbps of raw network bandwidth between instances, significantly higher bandwidth and lower latency for [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) workloads than standard TCP-based networking. By avoiding the TCP/IP stack, kernel crossings, and CPU interrupts, we eliminated much of the communication overhead that typically limits distributed performance.
 
 
 
@@ -41,9 +41,13 @@ The Bottom Line: In 2026, the 'Network' is no longer a utility; it is the archit
 
 ## 2. Data Gravity & Sovereignty
 
-In 2021, the "Full Cloud" dream often hits the wall of [Data Gravity](https://www.crowdstrike.com/en-us/cybersecurity-101/next-gen-siem/data-gravity/). Moving petabytes of simulation data isn't just slow; it’s an operational risk. By architecting a Hybrid Infrastructure, we created a competitive advantage in Data Sovereignty and Elastic Bursting. 
+In 2021, the "Full Cloud" dream often hits the wall of [Data Gravity](https://www.crowdstrike.com/en-us/cybersecurity-101/next-gen-siem/data-gravity/). Moving petabytes of simulation data isn't just slow; it’s an operational risk. We had to ensure that data moving between the on-prem cluster and the cloud was as secure as it was fast. We leveraged a dedicated connection (AWS [Direct Connect](https://aws.amazon.com/directconnect/)) and a high-performance cache for on-premises data (AWS [FSx for Lustre](https://aws.amazon.com/fsx/lustre/)) to optimize data movement. 
 
-In 2026, We are seeing a massive return to this model with Sovereign AI. Enterprises today want to keep their proprietary data for base-model training on-prem (Security) while utilizing the cloud for massive-scale inference and fine-tuning (Scalability).
+In a parallel workload (like CFD and GenAI), one instance must frequently access data residing in the memory of another instance. This "direct access" is the key to performance, but it’s also a significant security surface. Security cannot be an afterthought when running a fabric where the boundaries between nodes are intentionally blurred for speed.
+
+Following industry-standard security best practices and [Zero Trust](https://learn.microsoft.com/en-us/security/zero-trust/zero-trust-overview) principles, we implemented strict access controls, security hardening, data encryption (at rest and in transit), logs & monitoring, and automated configurations.
+
+By architecting a Hybrid Infrastructure, we created a practical advantage in [Data Sovereignty](https://www.cloudflare.com/learning/privacy/what-is-data-sovereignty/). In 2026, this model has become the standard for "Sovereign AI." Organizations now keep their sensitive and proprietary data on-premises for primary model training to maintain control, while using the cloud's scale for specific [fine-tuning](https://www.ibm.com/think/topics/fine-tuning) and [inference](https://www.ibm.com/think/topics/inference) tasks.
 
 ## 3. Efficiency Over "Brute Force"
 
