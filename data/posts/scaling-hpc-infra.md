@@ -65,4 +65,4 @@ CFD and GenAI are worlds apart in application, but they are neighbors in the dat
 
 Infrastructure is no longer a "background service"; it is the competitive edge.
 
-Don’t just design for one use case; design for Scale, Security, and Predictability.
+**Special Thanks** (this is not a sponsored post ;P!): I would like to extend a special thanks to the *AWS Solutions Architects* who collaborated with us in 2021. Their deep expertise in Elastic Fabric Adapter (EFA) and HPC-optimized resources was instrumental in helping us push the boundaries of what was possible in a hybrid cloud environment. By working closely with AWS team, we were able to bridge the gap between on-premises stability and cloud-native elasticity, ensuring that the physical limits of infrastructure never stood in the way of innovation.
